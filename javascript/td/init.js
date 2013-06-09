@@ -55,65 +55,65 @@ var init = function(){
 
 var initImage = function(){
 	backGround_img = new Image();
-	backGround_img.src = '/images/background.png';
+	backGround_img.src = '/images/td/background.png';
 	
 	floor_img = new Image();
-	floor_img.src = '/images/floor.png';
+	floor_img.src = '/images/td/floor.png';
 	floor1_img = new Image();
-	floor1_img.src = '/images/floor1.png';
+	floor1_img.src = '/images/td/floor1.png';
 	floor2_img = new Image();
-	floor2_img.src = '/images/floor2.png';
+	floor2_img.src = '/images/td/floor2.png';
 	floor3_img = new Image();
-	floor3_img.src = '/images/floor3.png';
+	floor3_img.src = '/images/td/floor3.png';
 	floor4_img = new Image();
-	floor4_img.src = '/images/floor4.png';
+	floor4_img.src = '/images/td/floor4.png';
 	floor5_img = new Image();
-	floor5_img.src = '/images/floor5.png';	
+	floor5_img.src = '/images/td/floor5.png';	
 	icon_img = new Image();
-	icon_img.src = '/images/icon.png';
+	icon_img.src = '/images/td/icon.png';
 	icon_img1 = new Image();
-	icon_img1.src = '/images/icon1.png';
+	icon_img1.src = '/images/td/icon1.png';
 
 	logo_img = new Image();
-	logo_img.src = '/images/logo.png';
+	logo_img.src = '/images/td/logo.png';
 	back_img = new Image();
-	back_img.src = '/images/back.png';
+	back_img.src = '/images/td/back.png';
 	
 	tower1_img = new Image();
-	tower1_img.src = '/images/tower1.png';
+	tower1_img.src = '/images/td/tower1.png';
 	tower2_img = new Image();
-	tower2_img.src = '/images/tower2.png';
+	tower2_img.src = '/images/td/tower2.png';
 	tower3_img = new Image();
-	tower3_img.src = '/images/tower3.png';
+	tower3_img.src = '/images/td/tower3.png';
 	tower4_img = new Image();
-	tower4_img.src = '/images/tower4.png';
+	tower4_img.src = '/images/td/tower4.png';
 	mouster1_img = new Image();
-	mouster1_img.src= '/images/mouster1.png';
+	mouster1_img.src= '/images/td/mouster1.png';
 	mouster2_img = new Image();
-	mouster2_img.src= '/images/mouster2.png';
+	mouster2_img.src= '/images/td/mouster2.png';
 	mouster3_img = new Image();
-	mouster3_img.src= '/images/mouster3.png';
+	mouster3_img.src= '/images/td/mouster3.png';
 
 	mouster4_img = new Image();
-	mouster4_img.src= '/images/mouster4.png';
+	mouster4_img.src= '/images/td/mouster4.png';
 
 	end_img = new Image();
-	end_img.src = '/images/end.png';
+	end_img.src = '/images/td/end.png';
 	bullet1_img = new Image();
-	bullet1_img.src = '/images/bullet1.png';
+	bullet1_img.src = '/images/td/bullet1.png';
 	bullet2_img = new Image();
-	bullet2_img.src = '/images/bullet2.png';
+	bullet2_img.src = '/images/td/bullet2.png';
 	info_img = new Image();
-	info_img.src  =  '/images/info.jpg';
+	info_img.src  =  '/images/td/info.jpg';
 
 	time_img = new Image();
-	time_img.src = '/images/time.png';
+	time_img.src = '/images/td/time.png';
 
 	blood_img = new Image();
-	blood_img.src = '/images/blood.gif';
+	blood_img.src = '/images/td/blood.gif';
 
 	slower_img = new Image();
-	slower_img.src = '/images/slower.png';
+	slower_img.src = '/images/td/slower.png';
 
 }
 
