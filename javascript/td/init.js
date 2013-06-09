@@ -1,7 +1,7 @@
 $(function(){
 	initImage();
 	
-	window.setTimeout(__init , 3000);
+	//window.setTimeout(__init , 3000);
 });
 
 var __init = function (){
@@ -54,8 +54,7 @@ var init = function(){
 
 
 var initImage = function(){
-	backGround_img = new Image();
-	backGround_img.src = '/images/td/background.png';
+	
 	
 	floor_img = new Image();
 	floor_img.src = '/images/td/floor.png';
@@ -114,6 +113,14 @@ var initImage = function(){
 
 	slower_img = new Image();
 	slower_img.src = '/images/td/slower.png';
+	
+	backGround_img = new Image();
+	backGround_img.src = '/images/td/background.png';
+	
+	backGround_img.onload=function(){
+		__init();
+	}
+	
 
 }
 
