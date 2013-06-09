@@ -1,7 +1,7 @@
 
 
 /**
-¿ØÖÆÀà
+æ§åˆ¶ç±»
 */
 
 
@@ -13,14 +13,14 @@ var initController = function(){
 	});
 
 
-	//µã»÷ÊÂ¼ş ¿ÉÄÜµã»÷¿ØÖÆÌ¨µÄËş¿ªÊ¼½¨Ôì  Ò²¿ÉÄÜ½¨ÔìËş
+	//ç‚¹å‡»äº‹ä»¶ å¯èƒ½ç‚¹å‡»æ§åˆ¶å°çš„å¡”å¼€å§‹å»ºé€   ä¹Ÿå¯èƒ½å»ºé€ å¡”
 	$("#bak_canvas").click(function(e){
 		e = e || window.event;
 		
 		clearContext(tower_info_context);
 
 
-		//Èç¹ûÑ¡ÖĞÁËÏÔÊ¾Ëş ¿ÉÄÜ»áÉı¼¶ »òÕß Âôµô
+		//å¦‚æœé€‰ä¸­äº†æ˜¾ç¤ºå¡” å¯èƒ½ä¼šå‡çº§ æˆ–è€… å–æ‰
 		if(showTowerTowerX && showTowerTowerY){
 			mayBeUpOrSaleTower(e);
 			showTowerTowerX = null;
@@ -28,22 +28,22 @@ var initController = function(){
 			return ;
 		}
 
-		//Èç¹ûÃ»ÓĞÑ¡Ôñ½¨ÔìµÄ½¨Öş Ôò´¦ÀíÏÂÃæµÄÒµÎñ ½¨Ôì½¨ÖşµÄÓÅÏÈ¼¶×î¸ß
+		//å¦‚æœæ²¡æœ‰é€‰æ‹©å»ºé€ çš„å»ºç­‘ åˆ™å¤„ç†ä¸‹é¢çš„ä¸šåŠ¡ å»ºé€ å»ºç­‘çš„ä¼˜å…ˆçº§æœ€é«˜
 		if(selectedBuildTower!=null ){
 			var buildFlag = mayBuildTower(e);
 			if(buildFlag){
 				//$("canvas").unbind("mousemove");				
 				clearContext(bak_context);
 			}	
-			//µã»÷¿Õ°×µØ·½Çå¿ÕÑ¡ÔñËş
+			//ç‚¹å‡»ç©ºç™½åœ°æ–¹æ¸…ç©ºé€‰æ‹©å¡”
 			
 		}else{						
 			
-			//Çå¿Õbak²ã
+			//æ¸…ç©ºbakå±‚
 			clearBak();
-			//ÏÔÊ¾ËşµÄĞÅÏ¢
+			//æ˜¾ç¤ºå¡”çš„ä¿¡æ¯
 			maybeShowTowerAttackRange(e);				
-			//½¨ÔìËş   
+			//å»ºé€ å¡”   
 			maybeChooseTower(e);
 
 			
@@ -54,15 +54,15 @@ var initController = function(){
 	});
 
 
-	//Êó±êÒÆ¶¯ÏÔÊ¾µÄĞÅÏ¢  
+	//é¼ æ ‡ç§»åŠ¨æ˜¾ç¤ºçš„ä¿¡æ¯  
 	$("#bak_canvas").mousemove(function(e){
 		clearBak();
 		e = e || window.event;
-		//Èç¹ûÑ¡ÖĞ¹ıËş ÔòÒÆ¶¯ÏÔÊ¾ËşµÄ¹¥»÷·¶Î§ 
+		//å¦‚æœé€‰ä¸­è¿‡å¡” åˆ™ç§»åŠ¨æ˜¾ç¤ºå¡”çš„æ”»å‡»èŒƒå›´ 
 		if(selectedBuildTower !=null){
 			showMoveTower(e);
 		}else{
-		//Ã»ÓĞÑ¡ÖĞ¹ıµÄ»° ÅĞ¶Ïxy×ø±ê Èç¹û¾­¹ı¿ØÖÆÀ¸µÄËşÍ¼±êĞèÒªÏÔÊ¾ËşµÄĞÅÏ¢
+		//æ²¡æœ‰é€‰ä¸­è¿‡çš„è¯ åˆ¤æ–­xyåæ ‡ å¦‚æœç»è¿‡æ§åˆ¶æ çš„å¡”å›¾æ ‡éœ€è¦æ˜¾ç¤ºå¡”çš„ä¿¡æ¯
 			var __x = getMapX(e);
 			var __y = getMapY(e);
 			var __index =  backGroundData[__y][__x];

@@ -1,4 +1,4 @@
-//ª≠‘≤
+//ÁîªÂúÜ
 var drawCircle = function(x , y , size , color , context){
 	context.beginPath();							
 	context.fillStyle = color;
@@ -8,14 +8,14 @@ var drawCircle = function(x , y , size , color , context){
 	context.stroke();
 }
 
-//ª≠±≥æ∞
+//ÁîªËÉåÊôØ
 var drawBack  = function( x , y  , width , height , context  , color){
 	
 	context.fillStyle = color;
 	drawRect( x , y , width , height , context);	
 }
 
-//–¥Œƒ◊÷
+//ÂÜôÊñáÂ≠ó
 var drawText  = function(x , y , text ,  context , color , style ){
 	context.textBaseline = 'top';
 	context.fillStyle    = color
@@ -25,7 +25,7 @@ var drawText  = function(x , y , text ,  context , color , style ){
 }
 
 
-//ª≠∑ΩøÈ
+//ÁîªÊñπÂùó
 var drawRect = function(x , y , width , height , context , color){
 	if(color){
 		context.fillStyle = color;
@@ -33,17 +33,17 @@ var drawRect = function(x , y , width , height , context , color){
 	context.fillRect(x, y, width, height);
 }
 
-//«Âø’ bak ≤„
+//Ê∏ÖÁ©∫ bak Â±Ç
 var clearBak  = function(){
 	bak_context.clearRect(0,0,canvasWidth,canvasHeight);
 }
 
-//∏˘æ›—°‘Ò≤„«Âø’
+//Ê†πÊçÆÈÄâÊã©Â±ÇÊ∏ÖÁ©∫
 var clearContext = function(context){
 	context.clearRect(0,0,canvasWidth,canvasHeight);
 }
 
-//ªÒ»°µ„ª˜÷Æ∫Û∂‘”¶µÿÕºµƒx◊¯±Í
+//Ëé∑ÂèñÁÇπÂáª‰πãÂêéÂØπÂ∫îÂú∞ÂõæÁöÑxÂùêÊ†á
 var getMapX = function(e){
 	var clientX  = e.clientX;
 	var canvasLeft = $("canvas")[0].offsetLeft;	
@@ -51,7 +51,7 @@ var getMapX = function(e){
 	return _x;
 }
 
-//ªÒ»°µ„ª˜÷Æ∫Û∂‘”¶µÿÕºµƒy◊¯±Í
+//Ëé∑ÂèñÁÇπÂáª‰πãÂêéÂØπÂ∫îÂú∞ÂõæÁöÑyÂùêÊ†á
 var getMapY = function(e){
 	var clientY  = e.clientY;
 	var canvasTop = $("canvas")[0].offsetTop;
@@ -60,7 +60,7 @@ var getMapY = function(e){
 
 }
 
-//∏˘æ›µ„ª˜µƒ◊¯±ÍªÒ»°canvasX
+//Ê†πÊçÆÁÇπÂáªÁöÑÂùêÊ†áËé∑ÂèñcanvasX
 var getCanvasY = function(e){
 	var clientY  = e.clientY;
 	var canvasTop = $("canvas")[0].offsetTop;
@@ -68,7 +68,7 @@ var getCanvasY = function(e){
 	return _y;
 }
 
-//∏˘æ›µ„ª˜µƒ◊¯±ÍªÒ»°canvasY
+//Ê†πÊçÆÁÇπÂáªÁöÑÂùêÊ†áËé∑ÂèñcanvasY
 var getCanvasX = function(e){
 	var clientX  = e.clientX;
 	var canvasLeft = $("canvas")[0].offsetLeft;	
@@ -76,19 +76,19 @@ var getCanvasX = function(e){
 	return _x;
 }
 
-//∏˘æ›canvasµƒ◊¯±ÍªÒ»°canvasX
+//Ê†πÊçÆcanvasÁöÑÂùêÊ†áËé∑ÂèñcanvasX
 var getMapXByCanvasX = function(x){	
 	var _x = parseInt(x / mapSize) ;	
 	return _x;
 }
 
-//∏˘æ›canvasµƒ◊¯±ÍªÒ»°canvasY
+//Ê†πÊçÆcanvasÁöÑÂùêÊ†áËé∑ÂèñcanvasY
 var getMapYByCanvasY = function(y){	
 	var _y = parseInt(y / mapSize) ;	
 	return _y;
 }
 
-//∏˘æ›canvasµƒ◊¯±Í ≈–∂œ «∑Òø…“‘“∆∂Ø
+//Ê†πÊçÆcanvasÁöÑÂùêÊ†á Âà§Êñ≠ÊòØÂê¶ÂèØ‰ª•ÁßªÂä®
 var canMove  = function(x,y,limit,direction){
 	var _x = getMapXByCanvasX(x);
 	var _y = getMapYByCanvasY(y);
@@ -112,7 +112,7 @@ var canMove  = function(x,y,limit,direction){
 
 
 
-//≈–∂œ¡Ω∏ˆ◊¯±Í «∑Ò≈ˆ◊≤
+//Âà§Êñ≠‰∏§‰∏™ÂùêÊ†áÊòØÂê¶Á¢∞Êíû
 var isCollide = function (x1,x2,y1,y2,width,height){
 	
 	var __collideX = false;
@@ -142,7 +142,7 @@ var isCollide = function (x1,x2,y1,y2,width,height){
 }
 
 
-//∏˘æ›…œ“ª∏ˆ∑ΩœÚªÒ»°œ¬“ª∏ˆ∑ΩœÚ
+//Ê†πÊçÆ‰∏ä‰∏Ä‰∏™ÊñπÂêëËé∑Âèñ‰∏ã‰∏Ä‰∏™ÊñπÂêë
 var getNextDirection = function(direction){	
 	if(direction == 'left'){
 		return 'up';
@@ -155,7 +155,7 @@ var getNextDirection = function(direction){
 	}
 }
 
-//ªÒ»°∂‘¡¢µƒ∑ΩœÚ
+//Ëé∑ÂèñÂØπÁ´ãÁöÑÊñπÂêë
 var getOppositeDirection  = function(direction){
 	if(direction == 'left'){
 		return 'right';
@@ -169,28 +169,28 @@ var getOppositeDirection  = function(direction){
 	
 }
 
-//∏˘æ›2∏ˆ◊¯±Í ªÒ»° ◊¯±Íµƒæ‡¿Î
+//Ê†πÊçÆ2‰∏™ÂùêÊ†á Ëé∑Âèñ ÂùêÊ†áÁöÑË∑ùÁ¶ª
 var getRangeByXY  = function(x1 , x2 , y1 ,y2){
 	var __range = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 	return __range;
 }
 
 
-// ∂‘Dateµƒ¿©’π£¨Ω´ Date ◊™ªØŒ™÷∏∂®∏Ò ΩµƒString   
-// ‘¬(M)°¢»’(d)°¢–° ±(h)°¢∑÷(m)°¢√Î(s)°¢ºæ∂»(q) ø…“‘”√ 1-2 ∏ˆ’ºŒª∑˚£¨   
-// ƒÍ(y)ø…“‘”√ 1-4 ∏ˆ’ºŒª∑˚£¨∫¡√Î(S)÷ªƒ‹”√ 1 ∏ˆ’ºŒª∑˚( « 1-3 Œªµƒ ˝◊÷)   
-// ¿˝◊”£∫   
+// ÂØπDateÁöÑÊâ©Â±ïÔºåÂ∞Ü Date ËΩ¨Âåñ‰∏∫ÊåáÂÆöÊ†ºÂºèÁöÑString   
+// Êúà(M)„ÄÅÊó•(d)„ÄÅÂ∞èÊó∂(h)„ÄÅÂàÜ(m)„ÄÅÁßí(s)„ÄÅÂ≠£Â∫¶(q) ÂèØ‰ª•Áî® 1-2 ‰∏™Âç†‰ΩçÁ¨¶Ôºå   
+// Âπ¥(y)ÂèØ‰ª•Áî® 1-4 ‰∏™Âç†‰ΩçÁ¨¶ÔºåÊØ´Áßí(S)Âè™ËÉΩÁî® 1 ‰∏™Âç†‰ΩçÁ¨¶(ÊòØ 1-3 ‰ΩçÁöÑÊï∞Â≠ó)   
+// ‰æãÂ≠êÔºö   
 // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423   
 // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18   
 Date.prototype.format = function(fmt){ //author: meizz   
 	var o = {   
-		"M+" : this.getMonth()+1,                 //‘¬∑›   
-		"d+" : this.getDate(),                    //»’   
-		"h+" : this.getHours(),                   //–° ±   
-		"m+" : this.getMinutes(),                 //∑÷   
-		"s+" : this.getSeconds(),                 //√Î   
-		"q+" : Math.floor((this.getMonth()+3)/3), //ºæ∂»   
-		"S"  : this.getMilliseconds()             //∫¡√Î   
+		"M+" : this.getMonth()+1,                 //Êúà‰ªΩ   
+		"d+" : this.getDate(),                    //Êó•   
+		"h+" : this.getHours(),                   //Â∞èÊó∂   
+		"m+" : this.getMinutes(),                 //ÂàÜ   
+		"s+" : this.getSeconds(),                 //Áßí   
+		"q+" : Math.floor((this.getMonth()+3)/3), //Â≠£Â∫¶   
+		"S"  : this.getMilliseconds()             //ÊØ´Áßí   
 	};   
 	if(/(y+)/.test(fmt)){
 		fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   

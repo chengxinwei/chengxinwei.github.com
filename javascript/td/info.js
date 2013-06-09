@@ -1,5 +1,5 @@
 
-//×Ô¶¯ÉÏ¸¡µÄĞÅÏ¢
+//è‡ªåŠ¨ä¸Šæµ®çš„ä¿¡æ¯
 var now_infoAry = new Array();
 
 var now_blood = 10;
@@ -19,7 +19,7 @@ var time_x = null;
 var time_y = null;
 
 
-//ÏÔÊ¾ÓÎÏ·ĞÅÏ¢
+//æ˜¾ç¤ºæ¸¸æˆä¿¡æ¯
 var showGameInfo = function(){
 	clearContext(info_context);
 	__showGoldInfo();
@@ -28,7 +28,7 @@ var showGameInfo = function(){
 	__showBlood();
 }
 
-//ĞÅÏ¢¶ÔÏó
+//ä¿¡æ¯å¯¹è±¡
 var info = function(x , y , context , color , lifeTime , createTime){
 	this.x = x;
 	this.y = y;
@@ -38,7 +38,7 @@ var info = function(x , y , context , color , lifeTime , createTime){
 	this.createTime  = createTime;
 }
 
-//ÏÔÊ¾ĞÅÏ¢
+//æ˜¾ç¤ºä¿¡æ¯
 var showInfo = function(){
 	for(var i=now_infoAry.length -1 ;i>=0 ; i--){
 
@@ -50,7 +50,7 @@ var showInfo = function(){
 		var __now = parseInt(new Date().format('hhmmssS'));
 
 		
-		//Èç¹û´´½¨Ê±¼ä¼Ó´æÔÚÊ±¼ä ´óÓÚµ±Ç°Ê±¼äÔòÒÆ³ı
+		//å¦‚æœåˆ›å»ºæ—¶é—´åŠ å­˜åœ¨æ—¶é—´ å¤§äºå½“å‰æ—¶é—´åˆ™ç§»é™¤
 
 		if(__now > __createTime + __info.lifeTime){
 			now_infoAry.splice(i,1);
@@ -65,23 +65,23 @@ var showInfo = function(){
 
 
 
-//ÏÔÊ¾½ğÇ®ĞÅÏ¢
+//æ˜¾ç¤ºé‡‘é’±ä¿¡æ¯
 var __showGoldInfo = function(){
 	drawText(gold_x , gold_y , now_gold , info_context , 'RGB(255,255,255)' , 'italic 22px sans-serif' );	
 }
 
-//ÏÔÊ¾Ê£ÓàµÄ¹ÖÎï
+//æ˜¾ç¤ºå‰©ä½™çš„æ€ªç‰©
 var __showMousterNum = function(){	
 	drawText(num_x , num_y , now_mousterAry.length , info_context , 'RGB(255,255,255)' , 'italic 22px sans-serif' );
 }
 
 
-//ÏÔÊ¾ÏÂÒ»²¨Ê±¼ä
+//æ˜¾ç¤ºä¸‹ä¸€æ³¢æ—¶é—´
 var __showMousterTime = function(){	
-	drawText(time_x , time_y , "µÚ"+now_gateLevel+"²¨"+attack_wating+"Ãë" , info_context ,  'RGB(0,0,0)' , 'italic 17px sans-serif' );
+	drawText(time_x , time_y , "ç¬¬"+now_gateLevel+"æ³¢"+attack_wating+"ç§’" , info_context ,  'RGB(0,0,0)' , 'italic 17px sans-serif' );
 }
 
-//ÏÔÊ¾µ±Ç°ÑªÁ¿
+//æ˜¾ç¤ºå½“å‰è¡€é‡
 var __showBlood = function(){	
 	drawText(blood_x , blood_y , now_blood , info_context ,  'RGB(0,0,0)' , 'italic 17px sans-serif' );
 }

@@ -1,25 +1,25 @@
 
 
 var task = null;
-//¿ªÊ¼×Ô¶¯ĞĞ×ß
+//å¼€å§‹è‡ªåŠ¨è¡Œèµ°
 var startTask = function(){
 	task = window.setInterval(__task,25);
 }
 
-//Í£Ö¹×Ô¶¯ĞĞ×ß
+//åœæ­¢è‡ªåŠ¨è¡Œèµ°
 var stopTask = function(){
 	window.clearInterval(task); 
 }
 
 
 var __task = function(){
-	//³õÊ¼»¯¹ÖÎïÒÆ¶¯
+	//åˆå§‹åŒ–æ€ªç‰©ç§»åŠ¨
 	autoMove();
-	//³õÊ¼»¯×Óµ¯	
+	//åˆå§‹åŒ–å­å¼¹	
 	startAutoBullet();
-	//ÏÔÊ¾ÓÒÉÏ½ÇĞÅÏ¢
+	//æ˜¾ç¤ºå³ä¸Šè§’ä¿¡æ¯
 	showGameInfo();
-	//ÏÔÊ¾ĞÅÏ¢
+	//æ˜¾ç¤ºä¿¡æ¯
 	showInfo();
 }
 

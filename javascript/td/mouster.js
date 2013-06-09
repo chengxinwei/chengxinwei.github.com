@@ -1,18 +1,18 @@
 
 var now_monster = null;
 
-//µ±Ç°¹Ø¿¨
+//å½“å‰å…³å¡
 var now_gateLevel = 1;
 
-//µ±Ç°¹Ø¿¨µÄ¹ÖÎï
+//å½“å‰å…³å¡çš„æ€ªç‰©
 var now_mousterAry = new Array();
 
-//¹¥»÷µÈ´ıÊ±¼ä
+//æ”»å‡»ç­‰å¾…æ—¶é—´
 var attack_wating = 3;
 
 
 
-//¹Ø¿¨µÈ¼¶ ¶ÔÓ¦¹ÖÎï¼¶±ğºÍÊıÁ¿
+//å…³å¡ç­‰çº§ å¯¹åº”æ€ªç‰©çº§åˆ«å’Œæ•°é‡
 var gate = {
 	gate1:"mouster1,5",
 	gate2:"mouster1,12",
@@ -48,7 +48,7 @@ var gate = {
 	}
 }
 
-//¹ÖÎïÀà
+//æ€ªç‰©ç±»
 var mouster1 = function(x , y , lastpdateTime,image , id){
 	this.id = id;
 	this.image = image;
@@ -62,14 +62,14 @@ var mouster1 = function(x , y , lastpdateTime,image , id){
 	this.direction_bak = 'right';
 	this.blood = 80;
 	this.nowBlood = 80;
-	this.refreshTime = 50;//¸üĞÂÊ±¼ä
+	this.refreshTime = 50;//æ›´æ–°æ—¶é—´
 	this.lastUpdateTime = null;	
 	this.returnSpeedTime = null;
 	this.gold = 12;
 	this.imageIndex = 0;
 }
 
-//¹ÖÎïÀà
+//æ€ªç‰©ç±»
 var mouster2 = function(x , y , lastpdateTime,image , id){
 	this.id = id;
 	this.image = image;
@@ -83,14 +83,14 @@ var mouster2 = function(x , y , lastpdateTime,image , id){
 	this.direction_bak = 'right';
 	this.blood = 190;
 	this.nowBlood = 190;
-	this.refreshTime = 50;//¸üĞÂÊ±¼ä
+	this.refreshTime = 50;//æ›´æ–°æ—¶é—´
 	this.lastUpdateTime = null;	
 	this.returnSpeedTime = null;
 	this.gold = 15;
 	this.imageIndex = 0;
 }
 
-//¹ÖÎïÀà
+//æ€ªç‰©ç±»
 var mouster3 = function(x , y , lastpdateTime,image , id){
 	this.id = id;
 	this.image = image;
@@ -104,14 +104,14 @@ var mouster3 = function(x , y , lastpdateTime,image , id){
 	this.direction_bak = 'right';
 	this.blood = 450;
 	this.nowBlood = 450;
-	this.refreshTime = 50;//¸üĞÂÊ±¼ä
+	this.refreshTime = 50;//æ›´æ–°æ—¶é—´
 	this.lastUpdateTime = null;	
 	this.returnSpeedTime = null;
 	this.gold = 18;
 	this.imageIndex = 0;
 }
 
-//¹ÖÎïÀà
+//æ€ªç‰©ç±»
 var mouster4 = function(x , y , lastpdateTime,image , id){
 	this.id = id;
 	this.image = image;
@@ -125,7 +125,7 @@ var mouster4 = function(x , y , lastpdateTime,image , id){
 	this.direction_bak = 'right';
 	this.blood = 1500;
 	this.nowBlood = 1500;
-	this.refreshTime = 50;//¸üĞÂÊ±¼ä
+	this.refreshTime = 50;//æ›´æ–°æ—¶é—´
 	this.lastUpdateTime = null;	
 	this.returnSpeedTime = null;
 	this.gold = 100;
@@ -133,7 +133,7 @@ var mouster4 = function(x , y , lastpdateTime,image , id){
 }
 
 
-//¹¥»÷µ¹¼ÆÊ±
+//æ”»å‡»å€’è®¡æ—¶
 var mybeStartAttack = function(){
 	if(attack_wating>0){
 		attack_wating--;
@@ -145,7 +145,7 @@ var mybeStartAttack = function(){
 	
 };
 
-//¿ªÊ¼
+//å¼€å§‹
 var initMouster = function(gateLevel){
 	var gateInfo = gate.getValueByKey(gateLevel);
 	if(gateInfo){
@@ -157,7 +157,7 @@ var initMouster = function(gateLevel){
 
 
 
-//´´½¨¹ÖÎï
+//åˆ›å»ºæ€ªç‰©
 var createMouster = function(sum , mousterType){
 
 	var __mouster =null;
@@ -181,16 +181,16 @@ var createMouster = function(sum , mousterType){
 }
 
 
-//ÅĞ¶ÏÊÇ·ñÍ¨¹ØÁË
+//åˆ¤æ–­æ˜¯å¦é€šå…³äº†
 var maybePass = function(){
 	if(now_mousterAry.length == 0){
 		now_gateLevel++;
 		var gateInfo = gate.getValueByKey(now_gateLevel);
 		if(gateInfo == null){
 			stopTask();
-			alert("Í¨¹ØÀ²£¡");
+			alert("é€šå…³å•¦ï¼");
 		}
-		//Èç¹û¹ÖÎïËÀÍê ½øÈëÏÂÒ»²¨
+		//å¦‚æœæ€ªç‰©æ­»å®Œ è¿›å…¥ä¸‹ä¸€æ³¢
 		attack_wating = 3;		
 		mybeStartAttack();
 		return;
@@ -200,7 +200,7 @@ var maybePass = function(){
 
 
 
-//×Ô¶¯ĞĞ×ß
+//è‡ªåŠ¨è¡Œèµ°
 var autoMove = function(){
 	clearContext(mouster_context);
 	for(var i=now_mousterAry.length-1;i>=0;i--){
@@ -210,13 +210,13 @@ var autoMove = function(){
 		var __mousterY = __mouster.y;
 		var __refreshTime = __mouster.refreshTime;		
 		
-		//ÅĞ¶Ï¹ÖÎïÊÇ·ñËÀÍö
+		//åˆ¤æ–­æ€ªç‰©æ˜¯å¦æ­»äº¡
 		if(parseInt(__mouster.nowBlood) <=0 ){
 			__removeMouster(i , false);
 			continue;
 		}
 
-		//ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÒÆ¶¯
+		//åˆ¤æ–­æ˜¯å¦å¯ä»¥ç§»åŠ¨
 		var __lastUpdateTime  = parseInt(__mouster.lastUpdateTime.format('hhmmssS'));
 
 		var __now = parseInt(new Date().format('hhmmssS'));
@@ -229,13 +229,13 @@ var autoMove = function(){
 			var __mapX = getMapXByCanvasX(__mousterX);
 			var __mapY = getMapYByCanvasY(__mousterY);
 			
-			//¹ÖÎïµ½ÖÕµãÁË ÒÆ³ı
+			//æ€ªç‰©åˆ°ç»ˆç‚¹äº† ç§»é™¤
 			if(__mapX == endMapX && __mapY == endMapY ){
 				__removeMouster(i , true);
 				continue;
 			}
 
-			//ÅĞ¶Ï¼õËÙÊ±¼äÊÇ·ñµ½´ï  Èç¹ûµ½´ï Ôò»Ö¸´ÒÆ¶¯ËÙ¶È
+			//åˆ¤æ–­å‡é€Ÿæ—¶é—´æ˜¯å¦åˆ°è¾¾  å¦‚æœåˆ°è¾¾ åˆ™æ¢å¤ç§»åŠ¨é€Ÿåº¦
 			if(__mouster.returnSpeedTime <=0 ){
 				__mouster.speed  = __mouster.baseSpeed;
 			}else{
@@ -246,7 +246,7 @@ var autoMove = function(){
 			var isMove = false;
 
 			if(__direction == 'left'){
-				//¼ÆËã¿ÉÒÔÒÆ¶¯µÄ¾àÀë
+				//è®¡ç®—å¯ä»¥ç§»åŠ¨çš„è·ç¦»
 				var moveIndex =  canMove( __mousterX - __mouster.speed - mapSize  , __mousterY , __mouster.speed ,__direction );			
 				if(moveIndex != 0){
 					isMove = true;
@@ -254,7 +254,7 @@ var autoMove = function(){
 					__mouster.imageIndex = __mouster.imageIndex + 1 ;
 				}
 			}else if(__direction == 'right'){
-				//¼ÆËã¿ÉÒÔÒÆ¶¯µÄ¾àÀë
+				//è®¡ç®—å¯ä»¥ç§»åŠ¨çš„è·ç¦»
 				var moveIndex =  canMove( __mousterX + __mouster.speed + mapSize  , __mousterY , __mouster.speed ,__direction );			
 				if(moveIndex != 0){
 					isMove = true;
@@ -276,20 +276,20 @@ var autoMove = function(){
 					__mouster.imageIndex = __mouster.imageIndex + 1 ;
 				}
 			}
-			//Èç¹ûÃ»ÓĞÒÆ¶¯´ú±íÅö×²µ½ÁË Ôò±ä»»·½Ïò
+			//å¦‚æœæ²¡æœ‰ç§»åŠ¨ä»£è¡¨ç¢°æ’åˆ°äº† åˆ™å˜æ¢æ–¹å‘
 			if(!isMove){			
 				__mouster.direction = getNextDirection(__direction);
 				
-				//»ñÈ¡¶ÔÁ¢µÄ·½Ïò
+				//è·å–å¯¹ç«‹çš„æ–¹å‘
 				var __oppositeDirection = getOppositeDirection( __mouster.direction_bak );
 				
-				//½ÇÉ«ÏÂÒ»¸ö·½Ïò²»ÄÜºÍ¶ÔÁ¢µÄ·½ÏòÏàÍ¬   ¾ÍÊÇ½ÇÉ«²»ÄÜÔ­Â··µ»Ø  Èç¹ûÏàÍ¬ Ôò¼ÌĞø»ñÈ¡ÏÂÒ»¸ö·½Ïò
+				//è§’è‰²ä¸‹ä¸€ä¸ªæ–¹å‘ä¸èƒ½å’Œå¯¹ç«‹çš„æ–¹å‘ç›¸åŒ   å°±æ˜¯è§’è‰²ä¸èƒ½åŸè·¯è¿”å›  å¦‚æœç›¸åŒ åˆ™ç»§ç»­è·å–ä¸‹ä¸€ä¸ªæ–¹å‘
 				if( __mouster.direction == __oppositeDirection){
 					var __nextDirection = getNextDirection(__mouster.direction);
 					__mouster.direction = __nextDirection;
 				}
 			}else{
-				//Èç¹ûÈËÎïÒÆ¶¯¹ı ²¢ÇÒ²»ÊÇ¶ÔÁ¢µÄ·½Ïò ÔòÌæ»»
+				//å¦‚æœäººç‰©ç§»åŠ¨è¿‡ å¹¶ä¸”ä¸æ˜¯å¯¹ç«‹çš„æ–¹å‘ åˆ™æ›¿æ¢
 				if( __mouster.direction != getOppositeDirection( __mouster.direction_bak )){
 					__mouster.direction_bak = __mouster.direction;
 				}
@@ -297,7 +297,7 @@ var autoMove = function(){
 		}
 
 
-		//»æ»­¹ÖÎïĞÅÏ¢
+		//ç»˜ç”»æ€ªç‰©ä¿¡æ¯
 		var __image = __mouster.image;
 		
 		var __blood = __mouster.nowBlood / __mouster.blood;
@@ -308,7 +308,7 @@ var autoMove = function(){
 		mouster_context.fillStyle = 'RGB(50,200,0)';
 		mouster_context.fillRect(  __mouster.x , __mouster.y - 6 , mapSize * __blood  ,  4 );
 
-		//Èç¹û¹ÖÎïÒÆ¶¯ËÙ¶È ±È»ù±¾ÒÆ¶¯ÂıµÃ»° ĞèÒª»æ»­¼õËÙĞ§¹û
+		//å¦‚æœæ€ªç‰©ç§»åŠ¨é€Ÿåº¦ æ¯”åŸºæœ¬ç§»åŠ¨æ…¢å¾—è¯ éœ€è¦ç»˜ç”»å‡é€Ÿæ•ˆæœ
 		if(__mouster.speed < __mouster.baseSpeed){
 			mouster_context.drawImage( slower_img , 0  , 0 ,  slower_img.width/3 ,  slower_img.height , __mouster.x , __mouster.y + mapSize - 10 , mapSize , 20 );
 		}
@@ -317,7 +317,7 @@ var autoMove = function(){
 }
 
 
-//¸ù¾İ×ø±êÑªÁ¿»ñÈ¡¹ÖÎï
+//æ ¹æ®åæ ‡è¡€é‡è·å–æ€ªç‰©
 var getMousterByXy = function (x , y ,blood ){
 	for(var i = 0 ; i <now_mousterAry.length ; i++){
 		
@@ -332,27 +332,27 @@ var getMousterByXy = function (x , y ,blood ){
 
 
 
-//¹ÖÎïÉ¾³ı  µ±¹ÖÎï±»É¾³ıµÄÊ±ºòĞèÒª×öÒ»Ğ©ÒµÎñ ËùÒÔÌáÈ¡ÁË
+//æ€ªç‰©åˆ é™¤  å½“æ€ªç‰©è¢«åˆ é™¤çš„æ—¶å€™éœ€è¦åšä¸€äº›ä¸šåŠ¡ æ‰€ä»¥æå–äº†
 var __removeMouster = function(i , isEscape){
 	var mouster = now_mousterAry[i];
 
-	//¹ÖÎïËÀÍöÔö¼Ó½ğÇ®
+	//æ€ªç‰©æ­»äº¡å¢åŠ é‡‘é’±
 	if(!isEscape){
 		now_gold = now_gold + mouster.gold;
 		var __info = new info(mouster.x , mouster.y , '+'+mouster.gold , 'RGB(255,200,40)' , 3000 , new Date());
 		now_infoAry.push(__info);
 	}else{
-		//¹ÖÎïÌÓÅÜ ²»¼Ó½ğÇ® ¿ÛÑª
+		//æ€ªç‰©é€ƒè·‘ ä¸åŠ é‡‘é’± æ‰£è¡€
 		now_blood--;
 		if(now_blood <=0){
 			stopTask();
-			alert("ÄÇÃ´¼òµ¥Äã¶¼ËÀÀ²£¿£¿£¿£¿£¿£¿");
+			alert("é‚£ä¹ˆç®€å•ä½ éƒ½æ­»å•¦ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ");
 		}
 	}
-	//¹ÖÎïËÀÍö
+	//æ€ªç‰©æ­»äº¡
 	now_mousterAry[i]=null;
 	now_mousterAry.splice(i,1);
-	//ÅĞ¶ÏÊÇ·ñÍ¨¹Ø»òÕßÊÇ·ñÏÂÒ»¹Ø
+	//åˆ¤æ–­æ˜¯å¦é€šå…³æˆ–è€…æ˜¯å¦ä¸‹ä¸€å…³
 	maybePass();
 
 	

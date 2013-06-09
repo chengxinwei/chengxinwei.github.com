@@ -14,7 +14,7 @@ var backGroundData =  [ ["2,gold",2,'2,num',2,'2,time',2,2,2,2,2,2,2,2,2,2,2,2,2
 
 
 
-//³õÊ¼»¯±³¾°
+//åˆå§‹åŒ–èƒŒæ™¯
 var initBackGround = function(){						
 	background_context.drawImage(backGround_img , 0 , 0 , backGround_img.width , backGround_img.height , 0 ,0 , canvasWidth  , canvasHeight  );		
 	

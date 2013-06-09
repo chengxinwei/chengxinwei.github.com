@@ -2,7 +2,7 @@
 
 var now_bulletAry = new Array();
 
-//×Óµ¯µÄ¶ÔÏó
+//å­å¼¹çš„å¯¹è±¡
 var bulletObj = function(x , y , speed , power ,  targetMouster , image , slower ){
 	this.x = x;
 	this.y = y;
@@ -19,13 +19,13 @@ var bulletObj = function(x , y , speed , power ,  targetMouster , image , slower
 
 
 
-//³õÊ¼»¯×Óµ¯
+//åˆå§‹åŒ–å­å¼¹
 var startAutoBullet = function(){
 	buildBullet();
 	autoBulletMove();
 }
 
-//×Ô¶¯´´½¨½¨Ôì×Óµ¯
+//è‡ªåŠ¨åˆ›å»ºå»ºé€ å­å¼¹
 var buildBullet = function(){
 	for(var i=0;i<now_towerAry.length ; i++ ){
 		
@@ -35,7 +35,7 @@ var buildBullet = function(){
 
 		var __now = parseInt(new Date().format('hhmmssS'));
 
-		//ÅĞ¶ÏÊÇ·ñ¿ÉÒÔ´´½¨×Óµ¯  Ò²¾ÍÊÇ¹¥»÷ËÙ¶È
+		//åˆ¤æ–­æ˜¯å¦å¯ä»¥åˆ›å»ºå­å¼¹  ä¹Ÿå°±æ˜¯æ”»å‡»é€Ÿåº¦
 		if(__now < __lastUpdateTime + __tower.refreshTime){
 			continue;
 		}
@@ -44,27 +44,27 @@ var buildBullet = function(){
 		var __towerTargetMouster = __tower.targetMouster;
 
 
-		//ËşµÄÖĞĞÄ×ø±ê
+		//å¡”çš„ä¸­å¿ƒåæ ‡
 		var __tower_centerX = __tower.x + mapSize/2;
 		var __tower_centerY = __tower.y + mapSize/2;
-		//ËşµÄ¹¥»÷·¶Î§
+		//å¡”çš„æ”»å‡»èŒƒå›´
 		var __size =  __tower.size;
 
 
-		//ÅĞ¶ÏÊÇ·ñ¹¥»÷¹ı
+		//åˆ¤æ–­æ˜¯å¦æ”»å‡»è¿‡
 		var __isAttackId = null;
 
-		//ËşµÄ¹¥»÷ÊıÁ¿
+		//å¡”çš„æ”»å‡»æ•°é‡
 		var attackSum = __tower.attackSum;
 
-		//Ê×ÏÈÅĞ¶Ï Ä¿±ê¹ÖÎïÊÇ·ñÔÚ¹¥»÷·¶Î§ÒÔÄÚ  Èç¹û²»ÔÚµÄ»°ÔÙÑ¡ÔñÆäËûµÄ¹ÖÎï
+		//é¦–å…ˆåˆ¤æ–­ ç›®æ ‡æ€ªç‰©æ˜¯å¦åœ¨æ”»å‡»èŒƒå›´ä»¥å†…  å¦‚æœä¸åœ¨çš„è¯å†é€‰æ‹©å…¶ä»–çš„æ€ªç‰©
 		if(__towerTargetMouster != null ){
 
-			//ÅĞ¶Ï¹ÖÎïÊÇ·ñËÀÍö
+			//åˆ¤æ–­æ€ªç‰©æ˜¯å¦æ­»äº¡
 			if(__towerTargetMouster.nowBlood <= 0 ){
 				__tower.targetMouster = null;
 			}else{
-				//Èç¹ûÃ»ÓĞËÀÍö Ôò¼ÌĞøÖ´ĞĞ
+				//å¦‚æœæ²¡æœ‰æ­»äº¡ åˆ™ç»§ç»­æ‰§è¡Œ
 				var __range = getRangeByXY( __tower_centerX , __towerTargetMouster.x , __tower_centerY , __towerTargetMouster.y);
 				if(__range <= __size){
 					__tower.lastUpdateTime = new Date();
@@ -72,14 +72,14 @@ var buildBullet = function(){
 					__isAttackId = __tower.targetMouster.id;
 					attackSum--;
 				}else{
-					//³¬³ö¹¥»÷·¶Î§Ôò°ÑËşµÄÄ¿±ê¹ÖÎïÖÍ¿Õ
+					//è¶…å‡ºæ”»å‡»èŒƒå›´åˆ™æŠŠå¡”çš„ç›®æ ‡æ€ªç‰©æ»ç©º
 					__tower.targetMouster = null;
 				}
 			}
 		}
 
 		
-		//Èç¹ûÃ»ÓĞ¹¥»÷¹ı ÔòÉ¨Ãè¹ÖÎï
+		//å¦‚æœæ²¡æœ‰æ”»å‡»è¿‡ åˆ™æ‰«ææ€ªç‰©
 		if(attackSum>0){	
 			for(var j = 0; j <now_mousterAry.length ; j++){	
 				
@@ -92,10 +92,10 @@ var buildBullet = function(){
 				var __mousterX = __mouster.x;
 				var __mousterY = __mouster.y;
 			
-				//»ñÈ¡¹ÖÎïºÍËşµÄ¾àÀë
+				//è·å–æ€ªç‰©å’Œå¡”çš„è·ç¦»
 				var __range = 	getRangeByXY(__mousterX , __tower_centerX , __mousterY , __tower_centerY);				
 
-				//Èç¹û¾àÀëÔÚ¹¥»÷·¶Î§ÒÔÄÚ Ôò¿ÉÒÔ¹¥»÷
+				//å¦‚æœè·ç¦»åœ¨æ”»å‡»èŒƒå›´ä»¥å†… åˆ™å¯ä»¥æ”»å‡»
 				if(__range <= __size){
 					__tower.targetMouster = __mouster;
 					__tower.lastUpdateTime = new Date();
@@ -111,17 +111,17 @@ var buildBullet = function(){
 }
 
 
-//¹¥»÷
+//æ”»å‡»
 var attack = function(index , tower){
 	var __bulletObj  = null;
-	//ËşµÄÖĞĞÄ×ø±ê
+	//å¡”çš„ä¸­å¿ƒåæ ‡
 	var __tower_centerX = tower.x + mapSize/2;
 	var __tower_centerY = tower.y + mapSize/2;
 
 	if(tower.index == 'T2'){
-		var __bulletObj  = new bulletObj( __tower_centerX , __tower_centerY , tower.speed , tower.power , tower.targetMouster ,  bullet2_img , true);//±ùËş
+		var __bulletObj  = new bulletObj( __tower_centerX , __tower_centerY , tower.speed , tower.power , tower.targetMouster ,  bullet2_img , true);//å†°å¡”
 	}else{
-		var __bulletObj  = new bulletObj( __tower_centerX , __tower_centerY , tower.speed , tower.power , tower.targetMouster ,  bullet1_img , false);//±ùËş
+		var __bulletObj  = new bulletObj( __tower_centerX , __tower_centerY , tower.speed , tower.power , tower.targetMouster ,  bullet1_img , false);//å†°å¡”
 	}
 
 	
@@ -134,7 +134,7 @@ var attack = function(index , tower){
 
 
 
-//×Óµ¯×Ô¶¯ÒÆ¶¯
+//å­å¼¹è‡ªåŠ¨ç§»åŠ¨
 var autoBulletMove = function(){
 	clearContext(bullet_context);
 	for(var i= now_bulletAry.length-1 ;i >=0 ; i--){
@@ -144,7 +144,7 @@ var autoBulletMove = function(){
 
 		var __mouster = __bullet.targetMouster;
 	
-		//ÅĞ¶Ï¹ÖÎïÊÇ·ñËÀÍö
+		//åˆ¤æ–­æ€ªç‰©æ˜¯å¦æ­»äº¡
 		if(__mouster.nowBlood <=0 ){
 			__bullet.targetMouster = null;
 			now_bulletAry.splice(i,1);
@@ -176,7 +176,7 @@ var autoBulletMove = function(){
 		bullet_context.drawImage( __image , 0 , 0 , __image.width/3 , __image.height  ,  __bullet.x , __bullet.y , 20 , 20 );
 
 
-		//ÅĞ¶Ï×Óµ¯ÊÇ·ñ´ò»÷µ½ÁË¹ÖÎï Èç¹û´ò»÷µ½ÁË ÔòÉ¾³ı×Óµ¯ ¹ÖÎï¿ÛÑª
+		//åˆ¤æ–­å­å¼¹æ˜¯å¦æ‰“å‡»åˆ°äº†æ€ªç‰© å¦‚æœæ‰“å‡»åˆ°äº† åˆ™åˆ é™¤å­å¼¹ æ€ªç‰©æ‰£è¡€
 		if(   ((__dx > (0 - 2) && __dx <= 0)
 			||(__dx <  2 && __dx >= 0))
 			&&((__dy > (0 - 2) && __dy <= 0)
@@ -184,7 +184,7 @@ var autoBulletMove = function(){
 
 			__mouster.nowBlood =  __mouster.nowBlood - __bullet.power;
 
-			//Èç¹û×Óµ¯´ø¼õËÙ ¹ÖÎïÒÆ¶¯ËÙ¶È½µµÍ  »Ö¸´ÒÆ¶¯ËÙ¶È¸ù¾İ returnSpeedTime À´ÅĞ¶Ï µ½0Ôò»Ö¸´
+			//å¦‚æœå­å¼¹å¸¦å‡é€Ÿ æ€ªç‰©ç§»åŠ¨é€Ÿåº¦é™ä½  æ¢å¤ç§»åŠ¨é€Ÿåº¦æ ¹æ® returnSpeedTime æ¥åˆ¤æ–­ åˆ°0åˆ™æ¢å¤
 			if(__bullet.slower){				
 				__mouster.speed = __mouster.baseSpeed/2;										
 				__mouster.returnSpeedTime = 3000;

@@ -1,5 +1,5 @@
 
-//ËşµÄÊı¾İ   0£º¿Õ°×  1.1£ºµÚÒ»ÖÖÀàËş µÈ¼¶1
+//å¡”çš„æ•°æ®   0ï¼šç©ºç™½  1.1ï¼šç¬¬ä¸€ç§ç±»å¡” ç­‰çº§1
 var towerData = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -16,23 +16,23 @@ var now_towerAry = new Array();
 
 var selectedBuildTower = null;
 
-//ÓÃÓÚ±£´æ µã»÷ËşÏÔÊ¾¹¥»÷·¶Î§µÄ ËşµÄ×ø±ê  ×ø±êÏà¶ÔÓÚ towerData¶şÎ¬Êı×éÖĞ
+//ç”¨äºä¿å­˜ ç‚¹å‡»å¡”æ˜¾ç¤ºæ”»å‡»èŒƒå›´çš„ å¡”çš„åæ ‡  åæ ‡ç›¸å¯¹äº towerDataäºŒç»´æ•°ç»„ä¸­
 var showTowerTowerX = null;
 var showTowerTowerY = null;
 
-//Éı¼¶»òÕßÂôµô °´Å¥´óĞ¡
+//å‡çº§æˆ–è€…å–æ‰ æŒ‰é’®å¤§å°
 var icon_size = 30;
 
 var towerObj = function(x,y,image , basePower , baseSize , upPercent , imageHeight , index , speed ,gold , name , desc , refreshTime , attackSum ,upGold ){
 	this.index = index;
 	this.x = x;
 	this.y = y;
-	this.image = image;  //ËşµÄÍ¼Æ¬
-	this.basePower = 20;	   //»ù´¡¹¥»÷Á¦
-	this.power  = 20;	  //µ±Ç°¹¥»÷Á¦
-	this.baseSize = baseSize; //»ù´¡¹¥»÷¾àÀë
-	this.size = baseSize;       //µ±Ç°¹¥»÷¾àÀë
-	this.upPercent = upPercent;   //Ã¿´ÎÉı¼¶Ìá¸ßµÄ°Ù·Ö±È
+	this.image = image;  //å¡”çš„å›¾ç‰‡
+	this.basePower = 20;	   //åŸºç¡€æ”»å‡»åŠ›
+	this.power  = 20;	  //å½“å‰æ”»å‡»åŠ›
+	this.baseSize = baseSize; //åŸºç¡€æ”»å‡»è·ç¦»
+	this.size = baseSize;       //å½“å‰æ”»å‡»è·ç¦»
+	this.upPercent = upPercent;   //æ¯æ¬¡å‡çº§æé«˜çš„ç™¾åˆ†æ¯”
 	this.imageHeight = imageHeight;
 	this.level = 1;
 	this.speed = speed;
@@ -43,14 +43,14 @@ var towerObj = function(x,y,image , basePower , baseSize , upPercent , imageHeig
 	this.desc = desc;
 	this.refreshTime = refreshTime; 
 	this.baseRefreshTime = refreshTime; 
-	this.attackSum = attackSum;	//ËşµÄ¹¥»÷ÊıÁ¿
-	this.upGold = upGold;  //Éı¼¶ĞèÒªµÄ½ğÇ®
+	this.attackSum = attackSum;	//å¡”çš„æ”»å‡»æ•°é‡
+	this.upGold = upGold;  //å‡çº§éœ€è¦çš„é‡‘é’±
 }
 
 var tower = {
 	tower1 : {	
-		name:'ÆÆ»µÕß',
-		desc:'¾ßÓĞÇ¿´óµÄÆÆ»µÁ¦,³¬Ô¶µÄ¹¥»÷¾àÀë,µ«ÊÇ¹¥»÷ËÙ¶È»ºÂı',
+		name:'ç ´åè€…',
+		desc:'å…·æœ‰å¼ºå¤§çš„ç ´ååŠ›,è¶…è¿œçš„æ”»å‡»è·ç¦»,ä½†æ˜¯æ”»å‡»é€Ÿåº¦ç¼“æ…¢',
 		basePower : 40,
 		baseSize  : 130,
 		upPercent : 0.2,
@@ -61,8 +61,8 @@ var tower = {
 		attackSum : 1,
 		upGold : 120
 	},tower2 : {	
-		name:'±ùËş',
-		desc:'±»±ùËş¹¥»÷µÄ¹ÖÎï»á¼õÂıÒÆ¶¯ËÙ¶È',
+		name:'å†°å¡”',
+		desc:'è¢«å†°å¡”æ”»å‡»çš„æ€ªç‰©ä¼šå‡æ…¢ç§»åŠ¨é€Ÿåº¦',
 		basePower : 12,
 		baseSize  : 90,
 		upPercent : 0.2,
@@ -73,8 +73,8 @@ var tower = {
 		attackSum : 1,
 		upGold : 100
 	},tower3 : {	
-		name:'À×µçËş',
-		desc:'³¬¿ìµÄ¹¥»÷ËÙ¶È,µ«ÊÇ¹¥»÷½ÏÈõ',
+		name:'é›·ç”µå¡”',
+		desc:'è¶…å¿«çš„æ”»å‡»é€Ÿåº¦,ä½†æ˜¯æ”»å‡»è¾ƒå¼±',
 		basePower : 6,
 		baseSize  : 100,
 		upPercent : 0.35,
@@ -85,8 +85,8 @@ var tower = {
 		attackSum : 1,
 		upGold : 110
 	},tower4 : {
-		name:'¼ıËş',
-		desc:'¼ıËş¾ßÓĞ¶àÖØ¹¥»÷,µ«ÊÇ¹¥»÷½ÏÈõ',
+		name:'ç®­å¡”',
+		desc:'ç®­å¡”å…·æœ‰å¤šé‡æ”»å‡»,ä½†æ˜¯æ”»å‡»è¾ƒå¼±',
 		basePower : 10,
 		baseSize  : 110,
 		upPercent : 0.15,
@@ -101,15 +101,15 @@ var tower = {
 
 
 
-//³õÊ¼»¯·ÀÓùËş
+//åˆå§‹åŒ–é˜²å¾¡å¡”
 var initTower  = function (){
 	
 	clearContext(tower_context);
 
-	//Çå¿Õ
+	//æ¸…ç©º
 	now_towerAry.length = 0;
 	
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	for(var i=0;i<towerData.length;i++){
 		for(var j=0;j<towerData[i].length;j++){		
 			var index = towerData[i][j];
@@ -130,7 +130,7 @@ var initTower  = function (){
 
 
 
-//¸ù¾İËşµÄ±àºÅ ÒÔ¼° µÈ¼¶ »ñÈ¡¹¥»÷·¶Î§
+//æ ¹æ®å¡”çš„ç¼–å· ä»¥åŠ ç­‰çº§ è·å–æ”»å‡»èŒƒå›´
 var getSizeByIndexAndLevel = function(index  , level){
 	
 	var __baseSize = null;
@@ -153,7 +153,7 @@ var getSizeByIndexAndLevel = function(index  , level){
 
 }
 
-//¸ù¾İËşµÄ±àºÅ ÒÔ¼° µÈ¼¶ »ñÈ¡¹¥»÷ËÙ¶È
+//æ ¹æ®å¡”çš„ç¼–å· ä»¥åŠ ç­‰çº§ è·å–æ”»å‡»é€Ÿåº¦
 var getFreshTimeByIndexAndLevel = function(index  , level){
 	
 	var __baseRefreshTime = null;
@@ -179,7 +179,7 @@ var getFreshTimeByIndexAndLevel = function(index  , level){
 }
 
 
-//»ñÈ¡ËşµÄ¼ÛÖµ
+//è·å–å¡”çš„ä»·å€¼
 var getGoldByIndexAndLevel = function(index  , level){
 	var __gold = null;
 	var __upGold = null;
@@ -201,7 +201,7 @@ var getGoldByIndexAndLevel = function(index  , level){
 }
 
 
-//¸ù¾İËşµÄ±àºÅ ÒÔ¼° µÈ¼¶ »ñÈ¡¹¥»÷Á¦
+//æ ¹æ®å¡”çš„ç¼–å· ä»¥åŠ ç­‰çº§ è·å–æ”»å‡»åŠ›
 var getPowerByIndexAndLevel = function(index  , level){
 	
 	var __basePower = null;
@@ -225,26 +225,26 @@ var getPowerByIndexAndLevel = function(index  , level){
 }
 
 
-//Êó±ê¾­¹ıÏÔÊ¾ËşµÄĞÅÏ¢
+//é¼ æ ‡ç»è¿‡æ˜¾ç¤ºå¡”çš„ä¿¡æ¯
 var showTowerInfo = function(x,y,tower){
 	
 	var gold = tower.gold;
-	var name = tower.name; //µÚÒ»ĞĞ
+	var name = tower.name; //ç¬¬ä¸€è¡Œ
 
-	var power = tower.power; //µÚ¶şĞĞ
-	var size = tower.size; //µÚ3ĞĞ
-	var refreshTime = tower.refreshTime; //µÚ4ĞĞ
-	var desc = tower.desc; ////µÚ5ĞĞÒÔÏÂ
+	var power = tower.power; //ç¬¬äºŒè¡Œ
+	var size = tower.size; //ç¬¬3è¡Œ
+	var refreshTime = tower.refreshTime; //ç¬¬4è¡Œ
+	var desc = tower.desc; ////ç¬¬5è¡Œä»¥ä¸‹
 	
 	var font_size = 15;
-	//×ÜĞĞÊı
+	//æ€»è¡Œæ•°
 	var basic_rows = 5;
 	var info_rows = basic_rows + 2;
-	//×î´ó¿í¶È
+	//æœ€å¤§å®½åº¦
 	var limit_width = font_size * 10;
-	//ÃèÊöµÄÎÄ×Ö³¤¶È
+	//æè¿°çš„æ–‡å­—é•¿åº¦
 	var desc_length = desc.length;
-	//¼ÆËãÃèÊöÒ»¹²¶àÉÙĞĞ
+	//è®¡ç®—æè¿°ä¸€å…±å¤šå°‘è¡Œ
 	while(desc_length * font_size  > limit_width){
 		desc_length = desc_length - 10;
 		info_rows++;
@@ -256,13 +256,13 @@ var showTowerInfo = function(x,y,tower){
 	drawRect( x , y  ,limit_width , info_rows  * font_size ,  bak_context , 'RGBA(242,203,148,0.9)' );	
 	drawText( x + font_size + 2  , y  , gold ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
 	drawText( x + font_size + 2 + 30  , y  , name ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
-	drawText( x  , y + font_size  ,   'ÉËº¦     : '+power ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
-	drawText( x  , y + font_size*2  , '¹¥»÷¾àÀë : '+size ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
-	drawText( x  , y + font_size*3  , '¹¥»÷ËÙ¶È : '+refreshTime / 1000 ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
+	drawText( x  , y + font_size  ,   'ä¼¤å®³     : '+power ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
+	drawText( x  , y + font_size*2  , 'æ”»å‡»è·ç¦» : '+size ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
+	drawText( x  , y + font_size*3  , 'æ”»å‡»é€Ÿåº¦ : '+refreshTime / 1000 ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
 	
 
 
-	//Èç¹û³¬¹ıÁËĞĞÊı ÔòÕÛĞĞ
+	//å¦‚æœè¶…è¿‡äº†è¡Œæ•° åˆ™æŠ˜è¡Œ
 	for(var i = basic_rows ; i <info_rows ; i++){
 		var __index = i - basic_rows;
 		drawText( x  , y + font_size * i  , desc.substring(__index * 10 , (__index+1)*10) ,  bak_context , 'RGB(0,0,0)' , 'italic 14px sans-serif');
@@ -271,7 +271,7 @@ var showTowerInfo = function(x,y,tower){
 	bak_context.drawImage(icon_img1 , icon_img1.width/3 *2 , 0 , icon_img1.width /3  , icon_img1.height , x , y  , font_size  , font_size );
 }
 
-//µã»÷ËşÏÔÊ¾Ëş¹¥»÷·¶Î§
+//ç‚¹å‡»å¡”æ˜¾ç¤ºå¡”æ”»å‡»èŒƒå›´
 var maybeShowTowerAttackRange = function(e){
 	
 	var _x = getMapX(e);
@@ -286,7 +286,7 @@ var maybeShowTowerAttackRange = function(e){
 		var centerX = _x * 50 + (mapSize/2);
 		var centerY = _y * 50 + (mapSize/2);
 
-		//»ñÈ¡ Ö¸¶¨ÀàĞÍºÍµÈ¼¶ ËşĞÅÏ¢
+		//è·å– æŒ‡å®šç±»å‹å’Œç­‰çº§ å¡”ä¿¡æ¯
 		var __tower = createTowerByIndex(null , null  ,"T" +  towerIndex ,levelIndex  );
 
 		
@@ -304,7 +304,7 @@ var maybeShowTowerAttackRange = function(e){
 		
 		if(levelIndex >= 5 ){
 			drawBack( __up_x ,   _y * mapSize + (icon_size/2) , icon_size , 16 , tower_info_context  , "RGBA(241,183,72,0.8)");
-			drawText(  __up_x ,   _y * mapSize + (icon_size/2)    , "¶¥¼¶" ,  tower_info_context , 'RGB(0,0,0)' , 'italic 16px sans-serif');
+			drawText(  __up_x ,   _y * mapSize + (icon_size/2)    , "é¡¶çº§" ,  tower_info_context , 'RGB(0,0,0)' , 'italic 16px sans-serif');
 		}else{
 			
 			tower_info_context.drawImage(icon_img , icon_img.width/8 * 1  , icon_img.height/2 * 1 , icon_img.width/8   , icon_img.height/2  ,   __up_x ,   _y * mapSize , icon_size , icon_size   );
@@ -321,19 +321,19 @@ var maybeShowTowerAttackRange = function(e){
 }
 
 
-//»ñÈ¡ÂôµôµÄ X Öá×ø±ê
+//è·å–å–æ‰çš„ X è½´åæ ‡
 var getSaleX = function(_x){
 	return _x * mapSize + mapSize + 5;	
 }
 
 
-//»ñÈ¡Éı¼¶µÄ X Öá×ø±ê
+//è·å–å‡çº§çš„ X è½´åæ ‡
 var getUpX = function(_x){
 	return _x * mapSize - icon_size - 5;
 }
 
 
-//Éı¼¶»òÕßÂô³ö
+//å‡çº§æˆ–è€…å–å‡º
 var mayBeUpOrSaleTower = function(e){
 	var _clickX = getCanvasX(e);
 	var _clickY = getCanvasY(e);
@@ -342,20 +342,20 @@ var mayBeUpOrSaleTower = function(e){
 	var __sale_x = getSaleX(showTowerTowerX);
 
 	
-	//Éı¼¶
+	//å‡çº§
 	if(isCollide(_clickX , __up_x , _clickY , showTowerTowerY  * mapSize  , icon_size , icon_size )){
 		var index = towerData[showTowerTowerY][showTowerTowerX];
 		var towerIndex = parseInt(index.substring(0,1));
 		var levelIndex = parseInt(index.substring(2,3));	
 
-		//×î¸ß5¼¶
+		//æœ€é«˜5çº§
 		if(levelIndex<5){
 
 			var __tower = createTowerByIndex(null,null,"T"+towerIndex,levelIndex);
 
-			//ÅĞ¶Ï½ğ±Ò
+			//åˆ¤æ–­é‡‘å¸
 			if(__tower.upGold > now_gold){
-				var __info = new info(canvasWidth /2 - 100 , 400 , '½ğ±Ò²»×ã' , 'RGB(0,0,0)' , 3000 , new Date());
+				var __info = new info(canvasWidth /2 - 100 , 400 , 'é‡‘å¸ä¸è¶³' , 'RGB(0,0,0)' , 3000 , new Date());
 				now_infoAry.push(__info);
 				return true;
 			}
@@ -367,7 +367,7 @@ var mayBeUpOrSaleTower = function(e){
 		}
 		return true;		
 	}
-	//··Âô
+	//è´©å–
 	else if(isCollide(_clickX , __sale_x , _clickY , showTowerTowerY  * mapSize  , icon_size , icon_size )){
 		var index = towerData[showTowerTowerY][showTowerTowerX];
 		var towerIndex = parseInt(index.substring(0,1));
@@ -390,7 +390,7 @@ var mayBeUpOrSaleTower = function(e){
 
 
 
-//½¨ÔìËş
+//å»ºé€ å¡”
 var mayBuildTower = function(e){
 	var _x = getMapX(e);
 	var _y = getMapY(e);
@@ -416,7 +416,7 @@ var mayBuildTower = function(e){
 			buildFlag = true;
 		}
 		
-		//Èç¹ûÒÑ¾­½¨ÔìÁË  ÔòÇå¿ÕÑ¡ÖĞµÄËş
+		//å¦‚æœå·²ç»å»ºé€ äº†  åˆ™æ¸…ç©ºé€‰ä¸­çš„å¡”
 		if(buildFlag){		
 			clearContext(tower_context);
 			clearSelectTower();
@@ -432,7 +432,7 @@ var mayBuildTower = function(e){
 
 
 
- //µã»÷½¨ÔìËş ÔÚÊó±êÒÆ¶¯µÄ¹ı³ÌÖĞ ÏÔÊ¾Ëş
+ //ç‚¹å‡»å»ºé€ å¡” åœ¨é¼ æ ‡ç§»åŠ¨çš„è¿‡ç¨‹ä¸­ æ˜¾ç¤ºå¡”
 var maybeChooseTower = function(e){
 	var _x = getMapX(e);
 	var _y = getMapY(e);
@@ -454,32 +454,32 @@ var maybeChooseTower = function(e){
 		if(__gold != null){		
 
 			if(__gold > now_gold){
-				var __info = new info(canvasWidth /2 - 100 , 400 , '½ğ±Ò²»×ã' , 'RGB(0,0,0)' , 3000 , new Date());
+				var __info = new info(canvasWidth /2 - 100 , 400 , 'é‡‘å¸ä¸è¶³' , 'RGB(0,0,0)' , 3000 , new Date());
 				now_infoAry.push(__info);
 				return;
 			}
 
-			// t1 t2 t3 t4 ¸ù¾İ²»Í¬µÄ ÀàĞÍ½¨Ôì²»Í¬µÄ Ëş
+			// t1 t2 t3 t4 æ ¹æ®ä¸åŒçš„ ç±»å‹å»ºé€ ä¸åŒçš„ å¡”
 			selectedBuildTower = index;		
 		}			
 	}
 }
 
 
-//Çå³şµã»÷ËşÖ®ºóµÄÊó±êÒÆ¶¯ÏÔÊ¾  ²¢ÇÒÈ¡Ïû ÒÑ¾­Ñ¡ÖĞµÄËş
+//æ¸…æ¥šç‚¹å‡»å¡”ä¹‹åçš„é¼ æ ‡ç§»åŠ¨æ˜¾ç¤º  å¹¶ä¸”å–æ¶ˆ å·²ç»é€‰ä¸­çš„å¡”
 var clearSelectTower = function(){
 	clearContext(bak_context);
-	selectedBuildTower = null;//Ñ¡ÖĞµÄËşÖÁ¿Õ
+	selectedBuildTower = null;//é€‰ä¸­çš„å¡”è‡³ç©º
 	showTowerTowerX = null;
 	showTowerTowerY = null;
 }
 
 
-//ÏÔÊ¾ÒÆ¶¯ÖĞµÄËş
+//æ˜¾ç¤ºç§»åŠ¨ä¸­çš„å¡”
 var showMoveTower  = function(e){
 	clearBak();
 	
-	//selectedBuildTower  ·¶Î§ T1 T2 T3 T4
+	//selectedBuildTower  èŒƒå›´ T1 T2 T3 T4
 	var __tower = createTowerByIndex(null , null , selectedBuildTower , 1);
 
 	if(!__tower){
@@ -488,25 +488,25 @@ var showMoveTower  = function(e){
 		return;
 	}
 
-	//»ñÈ¡×ø±ê
+	//è·å–åæ ‡
 	e = e || window.event;
 	var _x = getMapX(e);
 	var _y = getMapY(e);
 
-	//»­Ëş
+	//ç”»å¡”
 	drawTower(_x , _y ,__tower , bak_context );
 
-	//»­¹¥»÷·¶Î§
+	//ç”»æ”»å‡»èŒƒå›´
 	var centerX = _x * 50 + (mapSize/2);
 	var centerY = _y * 50 + (mapSize/2);
 	drawCircle(centerX , centerY , __tower.size , "RGBA(0,100,0,0.2)" , bak_context);
 
-	//µØÍ¼²»ÄÜ½¨Ôì  »òÕß  ÒÑ¾­½¨Ôì¹ıËşÁË
+	//åœ°å›¾ä¸èƒ½å»ºé€   æˆ–è€…  å·²ç»å»ºé€ è¿‡å¡”äº†
 	if(!canBuild(_x , _y)){
 		bak_context.fillStyle = canNotBuildColor;
 		bak_context.fillRect(_x * 50 , _y * 50, mapSize, mapSize);		
 	}else{
-		//¿ÉÒÔ½¨Ôì
+		//å¯ä»¥å»ºé€ 
 		bak_context.fillStyle = canBuildColor;
 		bak_context.fillRect(_x * 50 , _y * 50, mapSize, mapSize);		
 	}
@@ -517,7 +517,7 @@ var showMoveTower  = function(e){
 
 
 
-//»­Ëş
+//ç”»å¡”
 var drawTower = function( x , y , __tower , context){
 	var __image = __tower.image;
 	var __imageWidth = __tower.image.width /5 ;
@@ -527,7 +527,7 @@ var drawTower = function( x , y , __tower , context){
 
 
 
-//ÅĞ¶Ïµ±Ç°×ø±êÊÇ·ñ¿ÉÒÔ½¨Ôì
+//åˆ¤æ–­å½“å‰åæ ‡æ˜¯å¦å¯ä»¥å»ºé€ 
 var canBuild = function(x , y ){
 	var mapDataFlag = mapData[y][x] == 2 ;
 	var towerDataFlag =  towerData[y][x] == 0;
@@ -537,7 +537,7 @@ var canBuild = function(x , y ){
 
 
 
-//¸ù¾İËşµÄ±àºÅ½¨ÔìËş  
+//æ ¹æ®å¡”çš„ç¼–å·å»ºé€ å¡”  
 var createTowerByIndex = function( x , y ,index , level){
 	var __tower = null;	
 
