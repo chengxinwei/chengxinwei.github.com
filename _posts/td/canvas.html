@@ -1,0 +1,144 @@
+---
+layout: post
+category : lessons
+tagline: "Supporting tagline"
+tags : [intro, beginner, jekyll, tutorial]
+---
+
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>塔防</title>
+		<script src='js/jquery-1.4.min.js'></script>
+		<script src='js/init.js'></script>
+		<script src='js/background.js'></script>
+		<script src='js/map.js'></script>
+		<script src='js/tower.js'></script>
+		<script src='js/util.js'></script>
+		<script src='js/mouster.js'></script>
+		<script src='js/bullet.js'></script>
+		<script src='js/task.js'></script>
+		<script src='js/info.js'></script>
+		<script src='js/controller.js'></script>
+		<style>
+			canvas{
+				position:absolute;
+				top : 20px;
+				left : 200px;
+			}
+
+			#loadingDiv{
+				position:absolute;
+				top : 20px;
+				left : 200px;
+				width : 1000px;
+				height : 500px;
+			}
+
+			#loadingDiv{
+				position:absolute;
+				top:200px;
+			}
+		
+		
+		</style>
+
+		
+		<script>
+			//canvas参数
+			var canvasWidth = 1000;
+			var canvasHeight = 500;		
+
+			//可以建造和不能建造的颜色
+			var canBuildColor = "RGBA(124,169,200,0.5)";
+			var canNotBuildColor = "RGBA(254,29,29,0.3)";
+
+			//canvas 对象
+			var map_canvas = null;
+			var mouster_canvas = null;
+			var bullet_canvas = null;
+			var tower_canvas = null;
+			var background_canvas = null;
+			var bak_canvas = null;
+			var tower_info_canvas = null;
+			
+			//context 对象
+			var map_context = null;
+			var mouster_context = null;
+			var bullet_context = null;
+			var tower_context = null;
+			var background_context = null;
+			var bak_context = null;
+			var tower_info_context = null;
+
+
+			//图片对象
+			var backGround_img  = null;
+			var floor_img = null;
+			var floor1_img = null;
+			var floor2_img = null;
+			var floor3_img = null;
+			var floor4_img = null;
+			var floor5_img = null;	
+			
+			var icon_img = null;
+			var icon_img1 = null;
+	
+			//塔的图片
+			var tower1_img = null;	
+			var tower2_img = null;	
+			var tower3_img = null;	
+			var tower4_img = null;	
+			
+			//怪物图片
+			var mouster1_img = null;
+			var mouster2_img = null;
+			var mouster3_img = null;
+			var mouster4_img = null;
+
+			var back_img = null;
+			var logo_img = null;
+			var info_img = null;
+
+			var end_img  = null;
+			var bullet1_img = null;
+			var bullet2_img = null;
+			var time_img = null;
+		
+			//当前血量
+			var blood_img = null;
+
+			var slower_img = null;
+
+			
+			
+			
+
+			
+
+		</script>
+
+	</head>
+	
+
+	<body>
+		
+		<div id="loadingDiv" align="center">
+			<img src="image/loading.gif"></img>
+			<p>正在努力加载中.....</p>
+			<p>@author:cheng.xinwei</p>
+		</div>		
+		<canvas id="map_canvas" style="z-index:0"></canvas>
+		<canvas id="mouster_canvas"></canvas>
+		<canvas id="bullet_canvas" style="z-index:2"></canvas>
+		<canvas id="tower_canvas" style="z-index:1"></canvas>
+		<canvas id="bak_canvas"  style="z-index:99"></canvas>
+		<canvas id="tower_info_canvas" style="z-index:2"></canvas>
+		<canvas id="background_canvas" style="z-index:-1"></canvas>
+		<canvas id="info_canvas" style="z-index:3"></canvas>
+	</body>
+	
+
+
+</html>
