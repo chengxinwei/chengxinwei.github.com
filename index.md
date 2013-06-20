@@ -1,16 +1,19 @@
 ---
 layout: page
-title: 程序猿
-tagline: 应该相信，自己是生活的战胜者
+title: chengxinwei BLOG
 ---
 
 {% include JB/setup %}
 
-##推荐#
-
 
 ##最近文章#
-
+{% for category in site.categories %} 
+  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+  <ul>
+    {% assign pages_list = category[1] %}  
+    {% include JB/pages_list %}
+  </ul>
+{% endfor %}
 
 ##MarkDown使用手册#
 
