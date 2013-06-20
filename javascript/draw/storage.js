@@ -31,7 +31,7 @@ var initHistorty = function(){
 			$("#history_del_"+i).attr("href","javascript:void(0)");
 		}else{
 			//图片
-			$("#history_"+i).attr("src",'image/noimg.png');
+			$("#history_"+i).attr("src",'/images/draw/noimg.png');
 			//下载链接
 			$("#history_download_"+i)[0].removeAttribute('href');  
 			//删除链接
