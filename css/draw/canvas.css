@@ -1,0 +1,84 @@
+body{
+	font-size : 12px;
+}
+
+canvas {   
+	border-width: 1px;    
+	border-style: dashed;    
+	border-color: rgba(20, 126, 239, 0.50);
+	position: absolute;
+	z-index : 0;
+	left:70px;
+	top:20px;
+} 
+
+#drawController{
+	position: absolute;
+	left:40px;
+	top:20px;
+	width : 40px;
+}
+
+
+ 
+
+.border_nochoose {
+	border-width: 2px;  
+	border-style: dashed;     
+	border-color: rgba(20, 126, 239, 0.5);	
+	margin-top : 5px;
+}
+
+.border_choose {
+	border-width: 2px;  
+	border-style: dashed;     
+	border-color: rgb(230,69,4);
+	margin-top : 5px;
+}
+
+table tr td a{
+	disabled:disabled;
+}
+
+table tr td img{
+	border-width: 2px;  
+	border-style: dashed;     
+	border-color: rgba(20, 126, 239, 0.5);	
+	margin-top : 5px;
+}
+
+
+
+.i1{background:#000000;}
+.i2{background:#FF0000}
+.i3{background:#80FF00;}
+.i4{background:#00FFFF;}
+.i5{background:#808080;}
+.i6{background:#FF8000;}
+.i7{background:#408080;}
+.i8{background:#8000FF;}
+.i9{background:#CCCC00;}
+
+.color {
+	width : 250px;
+	height : 22px;
+	position: absolute;
+	display:none;border-width: 2px;  
+	border-style: dashed;     
+	border-color: rgba(20, 126, 239, 0.5);	
+	z-index:10;
+}
+
+
+#showHistory {
+	width : 780px;
+	float : right;
+	left:700px;
+	position: absolute;
+
+}
+
+#line_size{
+	position: absolute;
+	display:none;
+}

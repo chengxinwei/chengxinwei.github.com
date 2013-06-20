@@ -1,0 +1,220 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>画图板</title>
+	<script src='/javascript/jquery-1.4.min.js'></script>
+	<script src='/javascript/draw/draw.js'></script>
+	<script src='/javascript/draw/storage.js'></script>
+	
+	<link href= '/css/draw/canvas.css' type="text/css" rel="Stylesheet"/>
+
+	<script>       
+		//撤销的array
+		var cancelList = new Array();
+		//撤销的次数
+		var cancelIndex = 0;
+
+		$(function(){
+			initCanvas();
+			$("img")[0].click();
+			$("#color input").click(chooseColor);
+		});		
+
+		//初始化
+		var initCanvas = function(){
+			canvas =  document.getElementById("canvas");
+			canvas.width = canvasWidth;
+			canvas.height = canvasHeight;
+			context = canvas.getContext('2d');
+			canvasTop = $(canvas).offset().top
+			canvasLeft = $(canvas).offset().left;
+	
+
+			canvas_bak =  document.getElementById("canvas_bak");
+			canvas_bak.width = canvasWidth;
+			canvas_bak.height = canvasHeight;
+			context_bak = canvas_bak.getContext('2d');		
+		}	
+		
+		//下载图片
+		var downloadImage = function(){
+			$("#downloadImage_a")[0].href=canvas.toDataURL();
+			$("#downloadImage_a").click();
+		}
+
+		//展开颜色选择器
+		var showColor = function(obj){
+			var top = $(obj).offset().top;
+			var left = $(obj).offset().left;		
+			$("#color")[0].style.left = left + "px";;
+			$("#color")[0].style.top = top + "px";
+			$("#color").show();
+		
+		}
+		//展开线条大小选择器
+		var showLineSize = function(obj){
+			
+			if($("#line_size").is(":hidden")){
+				var top = $(obj).offset().top;
+				var left = $(obj).offset().left;				
+				$("#line_size")[0].style.left = left + $(obj).width() + 5; +  "px";
+				$("#line_size")[0].style.top = top   + "px";
+				$("#line_size").show();
+			}else{
+				$("#line_size").hide();
+			}
+		}
+
+		//选择颜色
+		var chooseColor = function(obj){		
+			var objClass = $(this).attr("class");
+			$("#chooseColor").attr("class" , "");
+			$("#chooseColor").addClass (objClass).addClass('border_nochoose');			
+			color  = $(this).css('background-color');
+			$("#color").hide();
+
+		}
+
+		//选择大小
+		var chooseLineSize =  function(_size){		
+			$("#chooseSize").attr("src" , "/images/draw/line_size_"+_size+".png");		
+			size = _size;
+			$("#line_size").hide();
+		}
+
+
+
+		//撤销上一个操作
+		var cancel = function(){
+			cancelIndex++;
+			context.clearRect(0,0,canvasWidth,canvasHeight);
+			var  image = new Image();
+			var index = cancelList.length-1 - cancelIndex  ;
+			var url = cancelList[index];
+			image.src = url;
+			image.onload = function(){
+				context.drawImage(image , 0 ,0 , image.width , image.height , 0 ,0 , canvasWidth , canvasHeight);
+			}
+		}
+
+		//重做上一个操作
+		var next = function(){
+			cancelIndex--;
+			context.clearRect(0,0,canvasWidth,canvasHeight);
+			var  image = new Image();
+			var index = cancelList.length-1 - cancelIndex  ;
+			var url = cancelList[index];
+			image.src = url;
+			image.onload = function(){
+				context.drawImage(image , 0 ,0 , image.width , image.height , 0 ,0 , canvasWidth , canvasHeight);
+			}
+		}
+
+		//保存历史 用于撤销
+		var saveImageToAry = function (){
+			cancelIndex = 0;
+			var dataUrl =  canvas.toDataURL();
+			cancelList.push(dataUrl);		
+		}
+
+	</script>
+
+</head>
+<body>
+
+
+		<div id="drawController">	
+			<img src = '/images/draw/pencil.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('pencil',this)" class = 'border_nochoose' title = '铅笔'/><br/>
+			<img src = '/images/draw/line.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('line',this);" class = 'border_nochoose' title = '画直线'/><br/>
+			<img src = '/images/draw/cancel.png' width = '20px;' height = '20px;' class="img" onclick="cancel(this)" class = 'border_nochoose' title = '撤销上一个操作'/><br/>
+			<img src = '/images/draw/next.png' width = '20px;' height = '20px;' class="img" onclick="next(this)" class = 'border_nochoose' title = '重做上一个操作'/><br/>
+			<input id="chooseColor"  type="button"  class = 'i1 border_nochoose' onclick="showColor(this)" title = '选择颜色'/><br/>
+			<img src = '/images/draw/square.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('square',this)" class = 'border_nochoose' title = '方形'/><br/>
+			<img src = '/images/draw/circle.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('circle',this)" class = 'border_nochoose' title = '圆'/><br/>
+			<img src = '/images/draw/handwriting.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('handwriting',this)" class = 'border_nochoose' title = '涂鸦'/><br/>
+			<img src = '/images/draw/rubber.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('rubber',this)" class = 'border_nochoose' title = '橡皮擦'/><br/>
+			<img  id="chooseSize" src = '/images/draw/line_size_1.png'  width = '20px;' height = '20px;' class="img" onclick="showLineSize(this)" class = 'border_nochoose' title = '线条大小'/><br/>
+			<img src = '/images/draw/xx.png' width = '20px;' height = '20px;' class="img" onclick="clearContext('1')" class = 'border_nochoose' title = '清屏'/><br/>
+			<img src = '/images/draw/save.png' width = '20px;' height = '20px;' class="img" onclick="save()" class = 'border_nochoose' title = '保存'/><br/>
+			<a href="#" download="picture.png"  id="downloadImage_a">
+				<img src = '/images/draw/download.png' width = '20px;' height = '20px;' class="img" class = 'border_nochoose' title = '下载' onclick="downloadImage();"/>
+			</a><br/>
+
+		</div>
+		<div style="float:left;width:30%">
+			<canvas id="canvas">
+				浏览器不支持哦，亲
+			</canvas>
+
+			<canvas id="canvas_bak"></canvas>
+		</div>
+	
+		<div id="showHistory" >
+			<h2>记录您绘画成果</h2>
+			<table style="font-size:12px;">
+				<tr>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_1"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_2"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_3"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_4"/></td>
+				</tr>
+				<tr align="center">
+					<td><a href="javascript:void(0);" id="history_del_1">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_1" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_2">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_2" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_3">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_3" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_4">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_4" download="picture.png">下载</a></td>
+				</tr>
+				</tr>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_5"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_6"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_7"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_8"/></td>
+				</tr>
+				<tr align="center">
+					<td><a href="javascript:void(0);" id="history_del_5">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_5" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_6">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_6" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_7">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_7" download="picture.png">下载</a></td>
+					<td><a href="javascript:void(0);" id="history_del_8">删除</a>&nbsp;
+						<a href="javascript:void(0);" id="history_download_8" download="picture.png">下载</a></td>
+				</tr>
+			</table>
+		</div>
+		
+		
+
+
+	
+	
+		<div id="color" class="color" >
+            <input class="i1" type="button"/>
+            <input class="i2" type="button"/>
+            <input class="i3" type="button"/>
+            <input class="i4" type="button"/>
+            <input class="i5" type="button"/>
+            <input class="i6" type="button"/>
+            <input class="i7" type="button"/>
+            <input class="i8" type="button"/>
+            <input class="i9" type="button"/>
+        </div>
+
+
+		<div id="line_size"  class = "border_nochoose" style="z-index:99">
+			<img src="/images/draw/line_size_1.png" width = '80px;' height = '12px;' onclick="chooseLineSize(1)"><br/>
+			<img src="/images/draw/line_size_3.png" width = '80px;' height = '12px;' onclick="chooseLineSize(3)"><br/>
+			<img src="/images/draw/line_size_5.png" width = '80px;' height = '12px;' onclick="chooseLineSize(5)"><br/>
+			<img src="/images/draw/line_size_7.png" width = '80px;' height = '12px;' onclick="chooseLineSize(7)">
+		</div>
+
+
+	
+</body>
+</html>
