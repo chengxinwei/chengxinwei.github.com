@@ -3,8 +3,6 @@ layout: page
 title: chengxinwei BLOG
 ---
 
-{% include JB/setup %}
-
 
 ##最近文章#
 {% for category in site.categories %} 
@@ -15,5 +13,4 @@ title: chengxinwei BLOG
   </ul>
 {% endfor %}
 
-##MarkDown使用手册#
 

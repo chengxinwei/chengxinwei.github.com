@@ -9,13 +9,13 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : 程序猿
+title : chengxinwei BLOG
 tagline: 应该相信，自己是生活的战胜者
 author :
-  name : 焦义贵
-  email : jyg0124@126.com
-  github : jyg0124@126.com
-  qq: 709436110
+  name : chengxinwei
+  email : 593040793@qq.com
+  github : 593040793@qq.com
+  qq: 593040793
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
