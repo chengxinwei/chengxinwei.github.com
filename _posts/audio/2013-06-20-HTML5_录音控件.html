@@ -41,7 +41,6 @@ category : html5
 		}
 
 		function playOrPaused(id,obj){
-			
 			if(audio.paused){
 				audio.play();
 				obj.innerHTML='暂停';
@@ -52,7 +51,6 @@ category : html5
 		}
 
 		function hideOrShowControls(id,obj){
-		
 			if(audio.controls){
 				audio.removeAttribute('controls');
 				obj.innerHTML = '显示控制框'
@@ -65,7 +63,6 @@ category : html5
 
 
 		function vol(id,type , obj){
-			
 			if(type == 'up'){
 				var volume = audio.volume  + 0.1;
 				if(volume >=1 ){
@@ -73,28 +70,18 @@ category : html5
 				
 				}
 				audio.volume =  volume;
-
-				
-
 			}else if(type == 'down'){
 				var volume = audio.volume  - 0.1;
 				if(volume <=0 ){
 					volume = 0 ;
-					
 				}
-			
 				audio.volume =  volume;
 			}
-
 			document.getElementById('nowVol').innerHTML = returnFloat1(audio.volume);
-
 		}
 		
 
 		function muted(id,obj){
-			
-		
-			
 			if(audio.muted){
 				audio.muted = false;
 				obj.innerHTML = '开启静音';
@@ -102,12 +89,7 @@ category : html5
 				audio.muted = true; 
 				obj.innerHTML = '关闭静音';
 			}
-
-			
-			
 		}
-
-
 
 		 //保留一位小数点
 
