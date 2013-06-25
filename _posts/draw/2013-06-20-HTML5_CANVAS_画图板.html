@@ -8,13 +8,12 @@ category : html5
 <head>
 
 	<title>画图板</title>
-	<script src='js/jquery-1.4.min.js'></script>
-	<script src='js/websocket.js'></script>
-	<script src='js/draw.js'></script>
-	<script src='js/storage.js'></script>
+	<script src='/javascript/jquery-1.4.min.js'></script>
+	<script src='/javascript/draw/draw.js'></script>
+	<script src='/javascript/draw/storage.js'></script>
 	
-	<link href= 'css/canvas.css' type="text/css" rel="Stylesheet"/>
-
+	<link href= '/css/draw/canvas.css' type="text/css" rel="Stylesheet"/>
+	
 	<script>       
 		//撤销的array
 		var cancelList = new Array();
@@ -189,22 +188,21 @@ category : html5
 
 
 		<div id="drawController">	
-			<img src = 'image/pencil.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('pencil',this)" class = 'border_nochoose' title = '铅笔'/><br/>
-			<img src = 'image/line.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('line',this);" class = 'border_nochoose' title = '画直线'/><br/>
-			<img src = 'image/cancel.png' width = '20px;' height = '20px;' class="img" onclick="cancel(this)" class = 'border_nochoose' title = '撤销上一个操作'/><br/>
-			<img src = 'image/next.png' width = '20px;' height = '20px;' class="img" onclick="next(this)" class = 'border_nochoose' title = '重做上一个操作'/><br/>
+			<img src = '/images/draw/pencil.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('pencil',this)" class = 'border_nochoose' title = '铅笔'/><br/>
+			<img src = '/images/draw/line.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('line',this);" class = 'border_nochoose' title = '画直线'/><br/>
+			<img src = '/images/draw/cancel.png' width = '20px;' height = '20px;' class="img" onclick="cancel(this)" class = 'border_nochoose' title = '撤销上一个操作'/><br/>
+			<img src = '/images/draw/next.png' width = '20px;' height = '20px;' class="img" onclick="next(this)" class = 'border_nochoose' title = '重做上一个操作'/><br/>
 			<input id="chooseColor"  type="button"  class = 'i1 border_nochoose' onclick="showColor(this)" title = '选择颜色'/><br/>
-			<img src = 'image/square.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('square',this)" class = 'border_nochoose' title = '方形'/><br/>
-			<img src = 'image/circle.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('circle',this)" class = 'border_nochoose' title = '圆'/><br/>
-			<img src = 'image/handwriting.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('handwriting',this)" class = 'border_nochoose' title = '涂鸦'/><br/>
-			<img src = 'image/rubber.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('rubber',this)" class = 'border_nochoose' title = '橡皮擦'/><br/>
-			<img  id="chooseSize" src = 'image/line_size_1.png'  width = '20px;' height = '20px;' class="img" onclick="showLineSize(this)" class = 'border_nochoose' title = '线条大小'/><br/>
-			<img src = 'image/xx.png' width = '20px;' height = '20px;' class="img" onclick="clearContext('1')" class = 'border_nochoose' title = '清屏'/><br/>
-			<img src = 'image/save.png' width = '20px;' height = '20px;' class="img" onclick="save()" class = 'border_nochoose' title = '保存'/><br/>
+			<img src = '/images/draw/square.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('square',this)" class = 'border_nochoose' title = '方形'/><br/>
+			<img src = '/images/draw/circle.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('circle',this)" class = 'border_nochoose' title = '圆'/><br/>
+			<img src = '/images/draw/handwriting.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('handwriting',this)" class = 'border_nochoose' title = '涂鸦'/><br/>
+			<img src = '/images/draw/rubber.png' width = '20px;' height = '20px;' class="img" onclick="draw_graph('rubber',this)" class = 'border_nochoose' title = '橡皮擦'/><br/>
+			<img  id="chooseSize" src = '/images/draw/line_size_1.png'  width = '20px;' height = '20px;' class="img" onclick="showLineSize(this)" class = 'border_nochoose' title = '线条大小'/><br/>
+			<img src = '/images/draw/xx.png' width = '20px;' height = '20px;' class="img" onclick="clearContext('1')" class = 'border_nochoose' title = '清屏'/><br/>
+			<img src = '/images/draw/save.png' width = '20px;' height = '20px;' class="img" onclick="save()" class = 'border_nochoose' title = '保存'/><br/>
 			<a href="#" download="picture.png"  id="downloadImage_a">
-				<img src = 'image/download.png' width = '20px;' height = '20px;' class="img" class = 'border_nochoose' title = '下载' onclick="downloadImage();"/>
+				<img src = '/images/draw/download.png' width = '20px;' height = '20px;' class="img" class = 'border_nochoose' title = '下载' onclick="downloadImage();"/>
 			</a><br/>
-
 		</div>
 		<div style="float:left;width:30%">
 			<canvas id="canvas">
@@ -218,10 +216,10 @@ category : html5
 			<h2>记录您绘画成果</h2>
 			<table style="font-size:12px;">
 				<tr>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_1"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_2"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_3"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_4"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_1"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_2"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_3"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_4"/></td>
 				</tr>
 				<tr align="center">
 					<td><a href="javascript:void(0);" id="history_del_1">删除</a>&nbsp;
@@ -234,10 +232,10 @@ category : html5
 						<a href="javascript:void(0);" id="history_download_4" download="picture.png">下载</a></td>
 				</tr>
 				</tr>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_5"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_6"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_7"/></td>
-					<td><img src = 'image/noimg.png' width = '150px;' height = '150px;' id="history_8"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_5"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_6"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_7"/></td>
+					<td><img src = '/images/draw/noimg.png' width = '150px;' height = '150px;' id="history_8"/></td>
 				</tr>
 				<tr align="center">
 					<td><a href="javascript:void(0);" id="history_del_5">删除</a>&nbsp;
@@ -271,11 +269,12 @@ category : html5
 
 
 		<div id="line_size"  class = "border_nochoose" style="z-index:99">
-			<img src="image/line_size_1.png" width = '80px;' height = '12px;' onclick="chooseLineSize(1)"><br/>
-			<img src="image/line_size_3.png" width = '80px;' height = '12px;' onclick="chooseLineSize(3)"><br/>
-			<img src="image/line_size_5.png" width = '80px;' height = '12px;' onclick="chooseLineSize(5)"><br/>
-			<img src="image/line_size_7.png" width = '80px;' height = '12px;' onclick="chooseLineSize(7)">
+			<img src="/images/draw/line_size_1.png" width = '80px;' height = '12px;' onclick="chooseLineSize(1)"><br/>
+			<img src="/images/draw/line_size_3.png" width = '80px;' height = '12px;' onclick="chooseLineSize(3)"><br/>
+			<img src="/images/draw/line_size_5.png" width = '80px;' height = '12px;' onclick="chooseLineSize(5)"><br/>
+			<img src="/images/draw/line_size_7.png" width = '80px;' height = '12px;' onclick="chooseLineSize(7)">
 		</div>
+
 
 
 	
